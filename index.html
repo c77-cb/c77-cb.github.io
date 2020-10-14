@@ -1,15 +1,114 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
     <title>貝拉生日快樂🎉</title>
-  </head>
-  <body>
-      <audio controls>
-          <source src=”https://github.com/c77-cb/c77-cb.github.io/blob/master/music/2020.10.11告白氣球.mp3” />
-      </audio>
-    <h1>阿卡貝拉</h1>
-    <input type="image" src="https://i.imgur.com/DZHND3l.jpg" width="127.95" height="191.85" alt="send" name="Test" id="Bella_01" onclick="window.open('?img='+document.getElementById('Bella_01').value + '&size=' +  + slider.getSelectTileSize(), '_self');;"/>
-  </body>
+    <style>
+        #uploadContainer{width: 750px; height: 500px; margin: 24px auto; border: 3px dashed #ccc; text-align: left; background-image: url( "https://i.imgur.com/DUqL9rl.jpg" );color : lightgoldenrodyellow;}
+        #mainContent{margin: 20px auto;}
+        .gameBoard{width: 500px;margin: 20px auto;}
+        #source_holder{width: 500px; height: 500px;background-size:500px 500px;clear:both;float:left;}
+        #helpText{clear:both;font-weight: bold;color: #4D6C81;}
+        .button{width : 100px; height: 30px;text-align:center;margin-bottom:5px; cursor:pointer;line-height:30px;margin-right:10px;background-color : #4D6C81;color : white;border-radius:5px;float:left;}
+        #slider{clear:both;}
+        .hide{display:none;}
+        .show{ display:block;}
+        .floatleft{ float : left;}
+        .floatRight{ float : right;}
+        .tile{ width: 125px; height: 125px;background-size:500px 500px;}
+        .timeCount{font-weight: bold;color: #4D6C81;height:30px;width : 100px;line-height:30px;}
+        .onHover{ -webkit-transform: scale(1.1); -o-transform: scale(1.1); -moz-transform: scale(1.1); }
+        .tile.tile00{background-position: 0px 0px;}
+        .tile.tile01{background-position: -125px 0px;}
+        .tile.tile02{background-position: -250px 0px;}
+        .tile.tile03{background-position: -375px 0px;}
+        
+        .tile.tile10{background-position: 0px -125px;}
+        .tile.tile11{background-position: -125px -125px;}
+        .tile.tile12{background-position: -250px -125px;}
+        .tile.tile13{background-position: -375px -125px;}
+        
+        .tile.tile20{background-position:     0px -250px;}
+        .tile.tile21{background-position: -125px -250px;}
+        .tile.tile22{background-position: -250px -250px;}
+        .tile.tile23{background-position: -375px -250px;}
+        
+        .tile.tile30{background-position:  0px -375px;}
+        .tile.tile31{background-position: -125px -375px;}
+        .tile.tile32{background-position: -250px -375px;}
+        .tile.tile33{background: #666666 !important; }
+        
+        
+        .buddy_drag_clone{position: fixed; border: 1px solid #dcdcdc; z-index: 200012; cursor:pointer;}
+        #popupcontent{
+        position: absolute;
+        visibility: hidden;
+        overflow: hidden;
+        border:1px solid #CCC;
+        background-color:#F9F9F9;
+        border:1px solid #333;
+        padding:5px;
+        }
+    </style>
+    <script src="./js/slider.js" type="text/javascript"></script>
+    <script src="./js/Controller/controller.js" type="text/javascript"></script>
+    <script src="./js/Model/model.js" type="text/javascript"></script>
+    <script src="./js/View/Box.js" type="text/javascript"></script>
+    <script src="./js/View/Drag.js" type="text/javascript"></script>
+    <script src="./js/View/view.js" type="text/javascript"></script>
+</head>
+<body>
+    
+    <embed src="https://clyp.it/lpyp3wnw?token=f0840ad1d1cb08c9b7fe0005ffec161e"  autostart="false" loop="1" height="45" width="230"></embed>
+<div id="mainContent" class="hide">
+
+<div class="gameBoard">
+<div id="source" class="button" onclick="slider.helpclick('source');">查看原圖</div><div id="game" onclick="slider.helpclick('game');" class="button">繼續遊戲</div><div id="shuffle"
+    onclick="slider.helpclick('shuffle');" class="button">來亂的～</div><span id="timeElapsed" class="floatRight timeCount"></span>
+</div>
+<div class="gameBoard">
+<div id="source_holder" class="hide"></div><div id="slider"></div><div id="previewDrag"></div>
+</div>
+<div id="helpText"><br/>保險起見說明一下～
+<ol>
+<li>顯而易見這是個滑動的拼圖遊戲XD.</li>
+<li>灰色部分相鄰的格子的是可以移動的唷</li>
+<li>直接「點擊」要移動的部分(用滑的比較難感應😅)</li>
+<li>電腦版的如果把滑鼠移動到可以移動的格子上，會浮起來👻</li>
+<li>目標當然就是把它拼回原圖啦～</li>
+</ol>
+<br/>我真的覺得這很難ಠ_ಠ  (好吧...可能是我太笨了ಥ_ಥ)
+<br/>那就加油囉(⁎⁍̴̛ᴗ⁍̴̛⁎)
+
+
+</div>
+</div>
+<div id="uploadContainer">
+
+
+<br/>
+<div id="dragContainer">
+
+<span style="padding-left:2em">窩知道這美照每次看到齁～都看呆了 (///▽///)</span><br>
+<span style="padding-left:2em">怎麼可以辣麼美RRRRR</span><br>
+<span style="padding-left:2em">但等你看完回過神來之後</span><br>
+<span style="padding-left:2em">請挑一張你喜歡的圖片放進來(⁎⁍̴̛ᴗ⁍̴̛⁎)</span><br><br/>
+<span style="padding-left:2em"><input type="file" id="imageholder" /></span><br><br/>
+<span style="padding-left:2em;font-size:14px"> 盡量是方形的啦(越接近越好～) </span><br>
+<span style="padding-left:2em;font-size:14px">不然齁～可能會變形唷～～</span><br>
+<span style="padding-left:2em;font-size:14px">(ㄚ是變胖還是變瘦就不一定了辣XD</span><br>
+<br/>  <br/>
+<br/>   <br/>
+
+<br/><br/><br/><br/>
+
+</div>
+</div>
+
+</body>
 </html>
+
+
+
